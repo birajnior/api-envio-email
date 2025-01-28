@@ -7,12 +7,10 @@ const app = express();
 
 // Configuração do CORS
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://api-envio-email.vercel.app"], // Adicione os domínios que você deseja permitir
+  origin: ["http://localhost:3000", "https://api-envio-email.vercel.app"],
   methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"], // Ajuste os cabeçalhos permitidos, se necessário
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
-
-// Usar CORS com as opções definidas
 app.use(cors(corsOptions));
 
 // Middleware para interpretar o corpo das requisições como JSON
