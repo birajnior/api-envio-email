@@ -1,5 +1,5 @@
 const smtpConfig = {
-  host: "smtp.seuservidor.com",
+  host: "smtp.gmail.com",
   port: 587,
   secure: false,
   auth: {

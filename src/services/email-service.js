@@ -4,6 +4,7 @@ const { smtpConfig } = require("../config/email-config.js");
 const transporter = nodemailer.createTransport({
   ...smtpConfig,
   connectionTimeout: 5000, // Tempo limite de conexão em milissegundos
+  greetingTimeout: 5000,
 });
 
 const sendEmail = async ({ nome, email, telefone, preferencia, projeto }) => {
@@ -18,15 +19,17 @@ const sendEmail = async ({ nome, email, telefone, preferencia, projeto }) => {
   `;
 
   try {
-    await transporter.sendMail({
+    console.log("Iniciando o envio de e-mail...");
+    const response = await transporter.sendMail({
       from: `"${nome}" <${email}>`,
-      to: "seu-email@exemplo.com",
+      to: "seu-email@exemplo.com", // Substitua pelo seu e-mail
       subject: "Novo contato recebido",
       html: message,
     });
+    console.log("E-mail enviado com sucesso!", response);
   } catch (error) {
-    console.error("Erro ao enviar e-mail:", error);
-    throw error; // Lance o erro para ser tratado no controller
+    console.error("Erro ao enviar e-mail:", error.message);
+    throw error; // Lance o erro para que o controller o capture
   }
 };
 
