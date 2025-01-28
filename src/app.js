@@ -4,9 +4,18 @@ const cors = require("cors");
 const emailRoutes = require("./routes/email-routes.js");
 
 const app = express();
-app.use(bodyParser.json());
-app.use(cors());
 
+// Configuração do CORS
+const corsOptions = {
+  origin: ["http://localhost:3000", "https://api-envio-email.vercel.app"], // Adicione os domínios que você deseja permitir
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"], // Ajuste os cabeçalhos permitidos, se necessário
+};
+
+// Usar CORS com as opções definidas
+app.use(cors(corsOptions));
+
+// Middleware para interpretar o corpo das requisições como JSON
 app.use(bodyParser.json());
 
 // Rota de teste para a URL raiz
