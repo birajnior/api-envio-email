@@ -7,6 +7,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(bodyParser.json());
+
 // Rota de teste para a URL raiz
 app.get("/", (req, res) => {
   res.send("API de envio de e-mails está funcionando!");

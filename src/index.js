@@ -1,9 +1,5 @@
-const app = require("./app.js");
+const app = require("./app.js"); // Importa o app Express
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
-
-require("dotenv").config();
+module.exports = (req, res) => {
+  return app(req, res); // Chama o app Express para lidar com as requisições
+};
