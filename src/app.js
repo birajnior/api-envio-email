@@ -14,13 +14,6 @@ app.get("/", (req, res) => {
   res.send("API de envio de e-mails está funcionando!");
 });
 
-app.get("/env-test", (req, res) => {
-  res.json({
-    SMTP_USER: process.env.SMTP_USER,
-    SMTP_PASS: process.env.SMTP_PASS,
-  });
-});
-
 // Registrar rotas
 app.use("/api", emailRoutes);
 
